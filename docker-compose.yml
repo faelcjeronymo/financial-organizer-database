@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    container_name: financial_organizer_database
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=Str0ngP@ssword
+      - POSTGRES_DB=FinancialOrganizer
+    volumes:
+      - ./.docker/postgres/data:/var/lib/postgresql/data
+      - ./.docker/postgres/scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
